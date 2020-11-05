@@ -1,0 +1,32 @@
+{
+    "id": "120B8BA9",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1604488726788.0,
+    "source_on_save": false,
+    "relative_order": 12,
+    "properties": {
+        "expression": "resulthex",
+        "caption": "resulthex",
+        "totalObservations": 12,
+        "displayedObservations": 12,
+        "variables": 32,
+        "cacheKey": "C1AD08DA",
+        "object": "resulthex",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=resulthex&cache_key=C1AD08DA&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 7957688064806756898,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1604488726788,
+    "read_only": false,
+    "read_only_alternatives": []
+}

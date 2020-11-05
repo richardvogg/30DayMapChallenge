@@ -1,0 +1,49 @@
+### Packages
+
+library(dplyr)
+library(ggplot2)
+library(chilemapas) # Comunas and Regions of Chile
+library(sf) # Maps
+library(ggsflabel)
+library(stringdist) # Fuzzy merging
+
+### Load data
+
+df <- read.csv(here::here("plebiscito_2020_resultados_por_mesa.csv")) %>%
+  mutate(comuna_low=tolower(comuna))
+
+
+comunas_list <- codigos_territoriales %>%
+  mutate(comuna_low=tolower(nombre_comuna)) %>%
+  select(comuna_low,nombre_comuna,codigo_comuna)
+
+### Fuzzy merging
+
+distmatrix <- stringdist::stringdistmatrix(comunas_list$comuna_low,df$comuna_low,method="lv")
+best_fit <- apply(distmatrix,2,which.min) %>% as.integer()
+similarity <- apply(distmatrix,2,min)
+
+df$best_fit <- comunas_list$codigo_comuna[best_fit]
+df$similarity <- similarity
+
+#### Make sure to check if your fuzzy merging did the correct thing
+
+final <- df %>%
+  group_by(region,comuna,best_fit) %>%
+  summarise(mesas=n_distinct(mesa),
+            votantes=sum(votantes),
+            apruebo=sum(apruebo),
+            rechazo=sum(rechazo)) %>%
+  mutate(perc_apruebo=apruebo/(apruebo+rechazo)) %>% 
+  left_join(mapa_comunas,by=c("best_fit"="codigo_comuna")) %>%
+  left_join(comunas_list,by=c("best_fit"="codigo_comuna"))
+
+### Create the map
+
+final %>%
+  filter(region=="METROPOLITANA DE SANTIAGO",!comuna%in%c("ISLA DE PASCUA","JUAN FERNANDEZ")) %>%
+  ggplot()+geom_sf(aes(geometry=geometry,fill=perc_apruebo))+
+  scale_fill_gradient2(low="red",high="blue",mid = "white",midpoint=0.5)+
+  #xlim(c(-72,-70))+ylim(c(-34,-32))+
+  geom_sf_text_repel(aes(label=nombre_comuna),force=10,min.segment.length=0,segment.size=1)
+

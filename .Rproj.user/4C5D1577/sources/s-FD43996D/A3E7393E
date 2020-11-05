@@ -1,0 +1,32 @@
+{
+    "id": "A3E7393E",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1604490797555.0,
+    "source_on_save": false,
+    "relative_order": 12,
+    "properties": {
+        "expression": "plebiscito",
+        "caption": "plebiscito",
+        "totalObservations": 44697,
+        "displayedObservations": 44697,
+        "variables": 12,
+        "cacheKey": "0CA8B8FD",
+        "object": "plebiscito",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=plebiscito&cache_key=0CA8B8FD&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 2482730676494692210,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1604490797555,
+    "read_only": false,
+    "read_only_alternatives": []
+}

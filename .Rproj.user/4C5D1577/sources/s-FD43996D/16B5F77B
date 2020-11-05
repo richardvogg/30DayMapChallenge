@@ -1,0 +1,32 @@
+{
+    "id": "16B5F77B",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1604489585091.0,
+    "source_on_save": false,
+    "relative_order": 9,
+    "properties": {
+        "expression": "comunas",
+        "caption": "comunas",
+        "totalObservations": 346,
+        "displayedObservations": 346,
+        "variables": 12,
+        "cacheKey": "105AAC0A",
+        "object": "comunas",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=comunas&cache_key=105AAC0A&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 8389754706581218082,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1604489585091,
+    "read_only": false,
+    "read_only_alternatives": []
+}
