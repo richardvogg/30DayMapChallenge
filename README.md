@@ -4,20 +4,20 @@
 
 ## Day 1 - Points
 
-![](Day 1 - Points/Chile_earthquakes.png)
+![](Day1 - Points/Chile_earthquakes.png)
 
 ## Day 2 - Lines 
 
-![](Day 2 - Lines/Rplot.png)
+![](Day2 - Lines/Rplot.png)
 
 ## Day 3 - Polygons
 
-![](Day 3 - Polygons/agua.png)
+![](Day3 - Polygons/agua.png)
 
 ## Day 4 - Hexagons
 
-![](Day 4 - Hexagons/results.png)
+![](Day4 - Hexagons/results.png)
 
 ## Day 5 - Blue
 
-![](Day 5 - Blue/lakes.png)
+![](Day5 - Blue/lakes.png)
