@@ -1,6 +1,7 @@
 # 30DayMapChallenge
 
 [Here](https://github.com/tjukanovt/30DayMapChallenge) is the link to the official repo. Every day comes along with a topic and the idea is to create a map.
+I am using R for most of the plots - with the packages ggplot2, sf, raster and tmap.
 
 ## Day 1 - Points
 
