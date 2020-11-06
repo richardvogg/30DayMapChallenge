@@ -22,3 +22,7 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 ## Day 5 - Blue
 
 ![](Day5_Blue/lakes.png)
+
+## Day 6 - Red
+
+![](Day6_Blue/plot.png)
