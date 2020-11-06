@@ -25,4 +25,4 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 
 ## Day 6 - Red
 
-![](Day6_Blue/plot.png)
+![](Day6_Red/plot.png)
