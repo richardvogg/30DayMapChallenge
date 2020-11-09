@@ -26,3 +26,15 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 ## Day 6 - Red
 
 ![](Day6_Red/plot.png)
+
+## Day 7 - Green
+
+![](Day7_Green/plot.png)
+
+## Day 8 - Yellow
+
+![](Day8_Yellow/plot.png)
+
+## Day 9 - Monochrome
+
+![](Day9_Monochrome/plot.png)
