@@ -1,0 +1,29 @@
+library(sf)
+library(readxl)
+library(ggplot2)
+library(dplyr)
+library(stringr)
+
+
+cases <- read_xlsx("C:/Richard/R and Python/Datasets/Fallzahlen_Kreise_04_11_2020.xlsx",sheet=5,skip=4)
+
+kreise <- read_sf("C:/Richard/R and Python/Datasets/Kreisgrenzen_2017_mit_Einwohnerzahl/Kreisgrenzen_2017_mit_Einwohnerzahl.shp")
+
+
+kreise_names <- kreise %>%
+  mutate(name=paste(ifelse(BEZ %in% c("Kreisfreie Stadt","Stadtkreis"),"SK","LK"),GEN)) %>%
+  mutate(name=str_remove("Eifelkreis",name))
+  .$name
+
+control <- data.frame(original=cases$LK)
+
+distmatrix <- stringdist::stringdistmatrix(kreise_names,cases$LK,method='jw',p=0.1)
+best_fit <- apply(distmatrix,2,which.min) %>% as.integer()
+similarity <- apply(distmatrix,2,min)
+
+control$best_fit <- kreise_names[best_fit]
+control$similarity <- similarity 
+
+
+kreise %>%
+  ggplot(aes(fill=EWZ))+geom_sf()
