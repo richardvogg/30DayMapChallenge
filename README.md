@@ -38,3 +38,7 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 ## Day 9 - Monochrome
 
 ![](Day9_Monochrome/plot.png)
+
+## Day 10 - Grid
+
+![](Day10_Grid/plot.png)
