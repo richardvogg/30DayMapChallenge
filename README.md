@@ -42,3 +42,7 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 ## Day 10 - Grid
 
 ![](Day10_Grid/plot.png)
+
+## Day 11 - 3D
+
+![](Day11_3D/plot.png)
