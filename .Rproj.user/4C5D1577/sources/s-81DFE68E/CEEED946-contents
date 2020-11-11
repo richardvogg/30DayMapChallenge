@@ -1,0 +1,185 @@
+---
+title: "GIS (still on a mini-dataset)"
+author: "Richard Vogg"
+date: "8 Januar 2020"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(ncdf4)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(readr)
+library(plotly)
+setwd("C:/Richard/R and Python/Environmental Data Science/GIS")
+
+
+plot_point_hist <- function(lon,lat) {
+  precip[lon,lat,] %>% as.data.frame() %>%
+    mutate(.,precip=.,
+           year = floor(row_number()/12-0.01)+1979,
+           month = ifelse(row_number()%%12==0,12,row_number()%%12)) %>%
+    ggplot(aes(x=as.Date(paste0(year,"-",month,"-01")),y=precip))+geom_line()
+}
+
+
+diff_to_df <- function(lon,lat) {
+  differences[lon,lat,,] %>% data.frame() %>%
+    mutate(year=as.numeric(rownames(.))+2009) %>%
+    pivot_longer(-year,names_to="month",values_to="diff_to_30y_mean") %>%
+    mutate(month=readr::parse_number(month)) %>% return()
+}
+
+visualize_differences <- function(lon,lat) {
+  diff_to_df(lon,lat) %>%
+    ggplot(aes(x=factor(month),y=factor(year),fill=diff_to_30y_mean))+
+    geom_tile()+ggtitle(paste0("lon=",lon,", lat=",lat))+
+    scale_fill_gradient2(low="orange",mid="white",high="blue",midpoint=0,na.value="white")
+}
+
+yearly_diffs <- function(lon,lat) {
+  diff_to_df(lon,lat) %>%
+    group_by(year) %>%
+    summarise(mean_diff=mean(diff_to_30y_mean,na.rm=T)) %>%
+    ggplot(aes(x=factor(year),y=mean_diff,fill=mean_diff))+geom_bar(stat="identity")+
+    scale_fill_gradient2(low="orange",mid="white",high="blue",midpoint=0,na.value="white")
+}
+
+monthly_diffs <- function(lon,lat) {
+  diff_to_df(lon,lat) %>%
+    group_by(month) %>%
+    summarise(mean_diff=mean(diff_to_30y_mean,na.rm=T)) %>%
+    ggplot(aes(x=factor(month),y=mean_diff,fill=mean_diff))+geom_bar(stat="identity")+
+    scale_fill_gradient2(low="orange",mid="white",high="blue",midpoint=0,na.value="white")
+}
+
+
+plot_selected_point_in_map <- function(longi,lati,plotly=F) {
+  
+  measuring_points <- array(1,dim=c(length(lon),length(lat)))
+  
+  g <- expand.grid(lon, lat) %>%
+    rename(lon = Var1, lat = Var2) %>%
+    mutate(precip = as.vector(measuring_points),
+           lon = ifelse(lon > 180, -(360 - lon), lon)) %>% 
+    ggplot() + 
+    geom_point(aes(x = lon, y = lat),
+               size = 2,color="lightblue") + 
+    geom_point(aes(x = lon[longi], y= lat[(lati-1)*144+1]),color="red",size=4)+
+    borders(regions="Chile", colour="grey50", fill=NA) + 
+    coord_quickmap()+
+    theme(panel.background = element_blank())+
+    xlim(c(-65,-76))+
+    ylim(c(-56,-17))
+  if(plotly==T) {
+    ggplotly(g)
+  }
+  else {g}
+  
+}
+
+ncin <- nc_open("precip.mon.mean.nc")
+ncatt_get(ncin,"precip","units")
+lat <- ncvar_get(ncin,"lat",verbose=F)
+lon <- ncvar_get(ncin,"lon")
+time <- ncvar_get(ncin,"time")
+precip <- ncvar_get(ncin,"precip")
+nc_close(ncin)
+
+```
+
+File from https://esrl.noaa.gov/psd/data/gridded/data.cmap.html has a size of 14MB and a low resolution (cuts the world in 144x72 slices). It contains monthly average precipitation data for all months between 1979 and 2019.
+
+## 30 years average
+
+We calculate the 30 years average for each grid point and each month (i.e. for January we average only over the values for January 1979-2009)
+
+```{r cars}
+
+avg_30 <- array(dim=c(length(lon),length(lat),12))
+
+for(i in 1:12) {
+  seq <- seq(from=i,to=372,by=12)
+  avg_30[,,i] <- rowMeans(precip[,,seq],dims=2)
+}
+
+```
+
+## Differences to 30 years average
+
+For each raster point and each month from January 2010 to November 2019, we calculate the difference in precipitation to the corresponding month in the 30 years average. 
+
+```{r pressure}
+
+differences <- array(dim=c(length(lon),length(lat),10,12))
+
+for(year in 0:9) {
+  for(month in 1:12){
+    if(year==9 & month==12) {}
+    else {
+      differences[,,year+1,month] <- precip[,,372+12*year+month]-avg_30[,,month]
+    }
+  }
+}
+```
+
+## Explore precipitation change in Chile
+
+I wrote 5 helper functions that create plots. With these we can explore the climate of Chile. Of course, the raster points are very large and not exactly matching the named cities, but it helps as an orientation.
+
+### Valparaiso
+
+```{r}
+longi <- 116
+lati <- 49
+plot_selected_point_in_map(longi,lati)
+
+plot_point_hist(longi,lati)
+
+visualize_differences(longi,lati)
+
+yearly_diffs(longi,lati)
+
+monthly_diffs(longi,lati)
+```
+
+
+### Antofagasta
+
+```{r}
+longi <- 117
+lati <- 46
+plot_selected_point_in_map(longi,lati)
+
+plot_point_hist(longi,lati)
+
+visualize_differences(longi,lati)
+
+yearly_diffs(longi,lati)
+
+monthly_diffs(longi,lati)
+```
+
+Amazing fun fact about the high difference for November 2019. I was interested in seeing if there was actually an event causing this and google helped: #https://www.t13.cl/noticia/nacional/declaran-alerta-meteorologica-regiones-del-norte-tormentas-electricas
+
+
+### Puerto Montt
+
+```{r}
+longi <- 115
+lati <- 53
+plot_selected_point_in_map(longi,lati)
+
+plot_point_hist(longi,lati)
+
+visualize_differences(longi,lati)
+
+yearly_diffs(longi,lati)
+
+monthly_diffs(longi,lati)
+```
