@@ -46,3 +46,9 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 ## Day 11 - 3D
 
 ![](Day11_3D/plot.png)
+(also available as gif)
+
+
+## Day 12 - Map not made with GIS software
+
+![](Day12_NotGIS/plot.jpg)
