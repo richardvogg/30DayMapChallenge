@@ -5,39 +5,39 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 
 ## Day 1 - Points
 
-![](Day1_Points/Chile_earthquakes.png)
+![](Day01_Points/Chile_earthquakes.png)
 
 ## Day 2 - Lines 
 
-![](Day2_Lines/Rplot.png)
+![](Day02_Lines/Rplot.png)
 
 ## Day 3 - Polygons
 
-![](Day3_Polygons/agua.png)
+![](Day03_Polygons/agua.png)
 
 ## Day 4 - Hexagons
 
-![](Day4_Hexagons/results.png)
+![](Day04_Hexagons/results.png)
 
 ## Day 5 - Blue
 
-![](Day5_Blue/lakes.png)
+![](Day05_Blue/lakes.png)
 
 ## Day 6 - Red
 
-![](Day6_Red/plot.png)
+![](Day06_Red/plot.png)
 
 ## Day 7 - Green
 
-![](Day7_Green/plot.png)
+![](Day07_Green/plot.png)
 
 ## Day 8 - Yellow
 
-![](Day8_Yellow/plot.png)
+![](Day08_Yellow/plot.png)
 
 ## Day 9 - Monochrome
 
-![](Day9_Monochrome/plot.png)
+![](Day09_Monochrome/plot.png)
 
 ## Day 10 - Grid
 
@@ -48,7 +48,10 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 ![](Day11_3D/plot.png)
 (also available as gif)
 
-
 ## Day 12 - Map not made with GIS software
 
 ![](Day12_NotGIS/plot.jpg)
+
+## Day 13 - Raster
+
+![](Day13_Raster/plot_germany.png)
