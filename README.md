@@ -55,3 +55,11 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 ## Day 13 - Raster
 
 ![](Day13_Raster/plot_germany.png)
+
+## Day 14 - Climate Change
+
+![](Day14_ClimateChange/plot.png)
+
+## Day 15 - Connections
+
+![](Day15_Connections/plot.png)
