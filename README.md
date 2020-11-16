@@ -63,3 +63,8 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 ## Day 15 - Connections
 
 ![](Day15_Connections/plot.png)
+
+## Day 16 - Islands
+
+![](Day16_Islands/plot.png)
+
