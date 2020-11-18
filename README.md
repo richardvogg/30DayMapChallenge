@@ -68,3 +68,10 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 
 ![](Day16_Islands/plot.png)
 
+## Day 17 - Historical
+
+![](Day17_Historical/plot.png)
+
+## Day 18 - Land use
+
+![](Day18_LandUse/plot.png)
