@@ -75,3 +75,7 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 ## Day 18 - Land use
 
 ![](Day18_LandUse/plot.png)
+
+## Day 19 - NULL
+
+![](Day19_NULL/plot.png)
