@@ -80,3 +80,15 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 
 ![](Day19_NULL/plot.png)
 [Link](https://mapchallenge-fuzzymatching.netlify.app/) to my post explaining the details.
+
+## Day 20 - Population
+
+![](Day20_Population/plot.png)
+
+## Day 21 - Water
+
+![](Day21_Water/plot.png)
+
+## Day 22 - Movement
+
+![](Day22_Movement/plot.png)
