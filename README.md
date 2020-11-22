@@ -79,3 +79,4 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 ## Day 19 - NULL
 
 ![](Day19_NULL/plot.png)
+[Link](https://mapchallenge-fuzzymatching.netlify.app/) to my post explaining the details.
