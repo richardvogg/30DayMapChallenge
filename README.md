@@ -92,3 +92,15 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 ## Day 22 - Movement
 
 ![](Day22_Movement/plot.png)
+
+## Day 23 - Boundaries
+
+![](Day23_Boundaries/plot.png)
+
+## Day 24 - Elevation
+
+![](Day24_Elevation/plot.png)
+
+## Day 25 - COVID
+
+![](Day25_COVID/plot.png)
