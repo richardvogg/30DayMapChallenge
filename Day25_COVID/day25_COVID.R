@@ -102,3 +102,32 @@ final %>%
         legend.position=c(0.7,0.18))
 
 #800x800
+
+sel_dates <- seq.Date(from=as.Date("2020-02-15"),to=as.Date("2020-11-25"),by="day")
+img_frames <- paste0("covid", seq_along(sel_dates), ".png")
+
+for (i in seq_along(sel_dates)) {
+  message(paste(" - image", i, "of", length(sel_dates)))
+  map <- final %>%
+    filter(date %in% sel_dates[i]) %>%
+    ggplot(aes(fill=cases7_per_bin))+geom_sf()+
+    labs(title = 'COVID in Germany',
+         subtitle = format(sel_dates[i],"%B"),
+         fill = "7 day incidence values",
+         caption = "Data from: NPGEO Corona, Hub RKI") +
+    scale_fill_manual(values=c("grey80","grey60",
+                               "grey40","gold2","orangered1","red3","red4"),drop=FALSE)+
+    theme(axis.text = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_blank(),
+          plot.title = element_text(size=20))
+  png(filename=paste0("covid",i,".png"),width = 800,height = 800)
+  print(map)
+  dev.off()
+}
+?magick::image_write_gif
+# build gif
+magick::image_write_gif(magick::image_read(img_frames),
+                        path = "covid.gif",
+                        delay = 1/10)
+# build gif
