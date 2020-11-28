@@ -104,3 +104,15 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 ## Day 25 - COVID
 
 ![](Day25_COVID/plot.png)
+
+## Day 26 - Map with a new tool
+
+![](Day26_NewTool/plot.png)
+
+## Day 27 - Big or small data
+
+![](Day27_SmallData/plot.png)
+
+## Day 28 - Non-geographic map
+
+![](Day28_NonGeographic/plot.png)
