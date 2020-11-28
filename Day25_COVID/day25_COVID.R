@@ -16,7 +16,7 @@ dates <- seq.Date(from=as.Date("2020-02-01"),to=as.Date("2020-11-25"),by="day")
 
 kreise <- read_sf("C:/Richard/R and Python/Datasets/Kreisgrenzen_2017_mit_Einwohnerzahl/Kreisgrenzen_2017_mit_Einwohnerzahl.shp") %>%
   mutate(name=paste(ifelse(BEZ %in% c("Kreisfreie Stadt","Stadtkreis"),"SK","LK"),GEN)) %>%
-  st_simplify(dTolerance=2000)
+  st_simplify(dTolerance=1000)
 
 kreise_df <- st_drop_geometry(kreise)
 
@@ -33,7 +33,7 @@ cases <- read.csv("C:/Richard/R and Python/Datasets/RKI_COVID19.csv") %>%
 
 cleaner <- function(vec) {
   vec %>% tolower() %>%
-    str_remove("eifelkreis|regionalverband|stadtverband") %>%
+    str_remove("eifelkreis|regionalverband|stadtverband|saale|am main") %>%
     return()
 }
 
@@ -120,7 +120,8 @@ for (i in seq_along(sel_dates)) {
     theme(axis.text = element_blank(),
           axis.ticks = element_blank(),
           axis.title = element_blank(),
-          plot.title = element_text(size=20))
+          plot.title = element_text(size=20),
+          plot.subtitle = element_text(size=16))
   png(filename=paste0("covid",i,".png"),width = 800,height = 800)
   print(map)
   dev.off()
