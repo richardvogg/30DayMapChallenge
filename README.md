@@ -55,6 +55,7 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 ## Day 13 - Raster
 
 ![](Day13_Raster/plot_germany.png)
+(also available as gif)
 
 ## Day 14 - Climate Change
 
@@ -79,7 +80,7 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 ## Day 19 - NULL
 
 ![](Day19_NULL/plot.png)
-[Link](https://mapchallenge-fuzzymatching.netlify.app/) to my post explaining the details.
+[Link to Post](https://mapchallenge-fuzzymatching.netlify.app/) to my post explaining the details.
 
 ## Day 20 - Population
 
@@ -104,3 +105,16 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 ## Day 25 - COVID
 
 ![](Day25_COVID/plot.png)
+(also available as gif)
+
+## Day 26 - Map with a new tool
+
+![](Day26_NewTool/plot.png)
+
+## Day 27 - Big or small data
+
+![](Day27_SmallData/plot.png)
+
+## Day 28 - Non-geographic map
+
+![](Day28_NonGeographic/plot.png)
