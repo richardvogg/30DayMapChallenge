@@ -1,32 +1,5 @@
 library(geogrid)
-library(tmap)
 
-kreise <- read_sf("C:/Richard/R and Python/Datasets/Kreisgrenzen_2017_mit_Einwohnerzahl/Kreisgrenzen_2017_mit_Einwohnerzahl.shp")
-
-
-kreise %>% st_drop_geometry() %>% View()
-  
-
-unterfranken <- kreise %>%
-  mutate(name=paste(ifelse(BEZ=="Kreisfreie Stadt","SK","LK"),GEN)) %>%
-  filter(SN_L=='09',SN_R=='6')
-
-unterfranken %>%
-  tm_shape() + 
-  tm_polygons("EWZ", palette = "viridis") +
-  tm_text("name",size=0.7)
-
-
-new_cells_hex <- calculate_grid(shape = unterfranken, grid_type = "hexagonal", seed = 3)
-resulthex <- assign_polygons(unterfranken, new_cells_hex)
-
-tm_shape(resulthex) + 
-  tm_polygons("EWZ", palette = "viridis") +
-  tm_text("name",size = 0.7)
-
-
-
-####################
 
 library(chilemapas) # Comunas and Regions of Chile
 library(sf) # Maps
@@ -108,3 +81,32 @@ tm_shape(resulthex) +
   tm_layout(panel.labels="Santiago's results of elections for a new constitution")
 
 ## save with 700x700 to see the whole names
+
+
+# Test
+
+library(tmap)
+
+
+kreise <- read_sf("C:/Richard/R and Python/Datasets/Kreisgrenzen_2017_mit_Einwohnerzahl/Kreisgrenzen_2017_mit_Einwohnerzahl.shp")
+
+
+kreise %>% st_drop_geometry() %>% View()
+
+
+unterfranken <- kreise %>%
+  mutate(name=paste(ifelse(BEZ=="Kreisfreie Stadt","SK","LK"),GEN)) %>%
+  filter(SN_L=='09',SN_R=='6')
+
+unterfranken %>%
+  tm_shape() + 
+  tm_polygons("EWZ", palette = "viridis") +
+  tm_text("name",size=0.7)
+
+
+new_cells_hex <- calculate_grid(shape = unterfranken, grid_type = "hexagonal", seed = 3)
+resulthex <- assign_polygons(unterfranken, new_cells_hex)
+
+tm_shape(resulthex) + 
+  tm_polygons("EWZ", palette = "viridis") +
+  tm_text("name",size = 0.7)
