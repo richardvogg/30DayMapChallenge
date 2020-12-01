@@ -118,3 +118,7 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 ## Day 28 - Non-geographic map
 
 ![](Day28_NonGeographic/plot.png)
+
+## Day 29 - Globe
+
+![](Day29_Globe/plot.png)
