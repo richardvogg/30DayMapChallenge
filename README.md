@@ -122,3 +122,7 @@ I am using R for most of the plots - with the packages ggplot2, sf, raster and t
 ## Day 29 - Globe
 
 ![](Day29_Globe/plot.png)
+
+## Day 30 - A map
+
+![](Day30_Map/plot.png)
